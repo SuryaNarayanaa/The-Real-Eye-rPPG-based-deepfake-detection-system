@@ -9,7 +9,7 @@
 The <b>Real Eye</b> is a rPPG (remote Photoplethysmography) based Multi-Model (both audio and video) Deepfake Detection System. It is based on the research paper [DeepFakesON-Phys: DeepFakes Detection based on Heart Rate Estimation](https://arxiv.org/pdf/2010.00400.pdf). It effectively detects deepfakes in videos using the extracted rPPG signals from the preprocessed videos.
 
 
-For further detail you can consult [our paper](https://arxiv.org/pdf/2010.00400.pdf).
+For further detail you can consult [DeepFakesON-Phys](https://arxiv.org/pdf/2010.00400.pdf).
 
 ![Example](images/cases_scores.png)
 
@@ -38,13 +38,16 @@ For further detail you can consult [our paper](https://arxiv.org/pdf/2010.00400.
 3) If you want to use a CUDA compatible GPU for faster predictions you will need CUDA and the Nvidia drivers installed in your computer: https://docs.nvidia.com/deeplearning/sdk/cudnn-install/
 
 
-### Using DeepFakesON-Phys for predicting scores:
+### Using The Real Eye Video Deepfake Detection Service
 
   1) Download or clone the repository.
-
   2) Activate your conda environment and run the `app.py` file in the `Video Deepfake Detection Service/src/` folder.This will start a flask server running on your locaalhost on port `5000`
   3) Open postman or anyother API testing tools and give a `POST` request to the route `http://127.0.0.1:5000/upload` and include your video file under the body form data with field name equals to `video`. The response will include the video name and prediction returned as json.
 
+### Upcoming Updates:
+  - React Frontend
+  - Browser Extension
+  - Audio Deepfake Detection Service
 
 
 ## Citation
