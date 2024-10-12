@@ -114,4 +114,4 @@ if __name__ == "__main__":
         os.makedirs('Video Deepfake Detection Service/videos')
         os.makedirs('Video Deepfake Detection Service/videos/DeepFrames')
         os.makedirs('Video Deepfake Detection Service/videos/RawFrames')
-    app.run(debug=True)
+    app.run(debug=True,host='0.0.0.0',port=5000)
