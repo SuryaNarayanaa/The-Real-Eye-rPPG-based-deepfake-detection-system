@@ -44,11 +44,15 @@ For further detail you can consult [DeepFakesON-Phys](https://arxiv.org/pdf/2010
   2) Activate your conda environment and run the `app.py` file in the `Video Deepfake Detection Service/src/` folder.This will start a flask server running on your locaalhost on port `5000`
   3) Open postman or anyother API testing tools and give a `POST` request to the route `http://127.0.0.1:5000/upload` and include your video file under the body form data with field name equals to `video`. The response will include the video name and prediction returned as json.
 
+### Using The Real Eye Audio Deepfake Detection Service
+
+  1) Download or clone the repository.
+  2) Activate your conda environment and run the `app.py` file in the `Audio Deepfake Detection Service/` folder.This will start a flask server running on your locaalhost on port `5001`
+  3) Open postman or anyother API testing tools and give a `POST` request to the route `http://127.0.0.1:5001/classify` and include your audio file under the body form data with field name equals to `file`. The response will include the prediction returned as json.
+
 ### Upcoming Updates:
   - React Frontend
   - Browser Extension
-  - Audio Deepfake Detection Service
-
 
 ## Citation
 ```
