@@ -1,0 +1,92 @@
+Steps for Deepfake Detection using rPPG:
+Video Preprocessing:
+
+Load the video file.
+Extract individual frames for processing.
+Face Detection:
+
+Detect and crop the face region in each frame using a face detection algorithm (e.g., Haar Cascade, MTCNN).
+Skin Region Extraction (Optional):
+
+Focus on skin regions such as the forehead and cheeks, which are more indicative of rPPG signals.
+Extract RGB Channels:
+
+For each face region in every frame, extract the Red, Green, and Blue (RGB) color channels.
+rPPG Signal Extraction:
+
+Calculate spatial averages of the Green channel values (most correlated with blood flow) over time.
+Extract temporal changes in the Green channel using frame differencing to capture color variations over time.
+Signal Preprocessing:
+
+Normalize the rPPG signals by subtracting the mean and dividing by the standard deviation to remove lighting conditions.
+Apply a bandpass filter (0.7–4.0 Hz) to isolate heart rate frequencies.
+rPPG Signal Enhancement:
+
+Use Principal Component Analysis (PCA) or Independent Component Analysis (ICA) to separate physiological signals from noise and improve the clarity of the rPPG signal.
+Heart Rate Estimation:
+
+Use Fast Fourier Transform (FFT) to find the dominant frequency in the rPPG signal and estimate the heart rate.
+Inconsistency Detection:
+
+Analyze the periodicity and consistency of the heart rate signal. Deepfakes often fail to maintain realistic physiological signals over time, resulting in irregularities.
+Classifier (Optional):
+
+Train a machine learning classifier (e.g., SVM, CNN) to distinguish between real and deepfake videos based on the extracted rPPG signal patterns and their inconsistencies.
+Deepfake Prediction:
+Use the trained model or direct comparison of rPPG signals to predict whether the video is real or a deepfake.
+
+
+/rppg_deepfake_detection/
+│
+├── face_detection/
+│   └── face_detection.py
+│       ├── detect_face(frame)
+│       ├── crop_face_region(frame)
+│
+├── face_segmentation/ (Optional)
+│   └── face_segmentation.py
+│       ├── segment_face_regions(face_image)
+│
+├── color_extraction/
+│   └── color_extraction.py
+│       ├── extract_rgb_channels(face_image)
+│       ├── get_color_channel_average(region, color_channel)
+│
+├── rppg_spatial/
+│   └── spatial_rppg.py
+│       ├── compute_spatial_average_color(region)
+│       ├── extract_spatial_rppg(face_regions)
+│
+├── rppg_temporal/
+│   └── temporal_rppg.py
+│       ├── compute_temporal_color_change(current_frame, previous_frame)
+│       ├── extract_temporal_rppg(frames)
+│
+├── signal_processing/
+│   ├── preprocessing.py
+│   │   ├── normalize_signal(signal)
+│   │   ├── apply_bandpass_filter(signal, lowcut, highcut, fs)
+│   ├── enhancement.py (Optional)
+│   │   ├── apply_pca_to_rppg(signal)
+│   │   ├── apply_ica_to_rppg(signal)
+│
+├── signal_fusion/
+│   └── signal_fusion.py
+│       ├── combine_spatial_temporal_rppg(spatial_signal, temporal_signal)
+│       ├── fuse_rppg_signals(signals_list)
+│
+├── frequency_analysis/
+│   └── frequency_analysis.py
+│       ├── extract_dominant_frequency(signal)
+│       ├── perform_fft(signal)
+│
+├── heart_rate_estimation/
+│   └── heart_rate_estimation.py
+│       ├── estimate_heart_rate_from_frequency(frequency)
+│
+├── deepfake_detection/
+│   └── detection.py
+│       ├── check_rppg_signal_consistency(rppg_signal)
+│       ├── analyze_rppg_periodicity(signal)
+│
+└── main.py
